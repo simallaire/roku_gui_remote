@@ -1,39 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>276</width>
-    <height>393</height>
+    <height>394</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="cursor">
-   <cursorShape>ArrowCursor</cursorShape>
-  </property>
   <property name="focusPolicy">
-   <enum>Qt::NoFocus</enum>
+   <enum>Qt::TabFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Roku remote</string>
+   <string>Roku Remote</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="computer">
-    <normaloff>.</normaloff>.</iconset>
+   <iconset>
+    <normaloff>../../Downloads/Roku-Emblem.png</normaloff>../../Downloads/Roku-Emblem.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>0.950000000000000</double>
-  </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -328,7 +316,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="audio-volume-high"/>
+         <iconset theme="audio-volume-high">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -347,7 +336,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="audio-volume-low"/>
+         <iconset theme="audio-volume-low">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>

@@ -1,15 +1,15 @@
 import requests
 
 from pynput import keyboard
-from PyQt6.QtWidgets import QDialog, QMainWindow, QPushButton
-from remote import Ui_Dialog
+from PyQt6.QtWidgets import QDialog, QMainWindow, QPushButton, QWidget
+from remote import Ui_Form
 
 class RokuApp():
     def __init__(self, ip, kb_listener):
-        self.Dialog = QDialog()
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self.Dialog)
-        self.Dialog.show()
+        self.Form = QWidget()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
         self.baseAddr = "http://" + ip
         self.ui.pushButtonOff.clicked.connect(self.btnOff_clicked)
         self.ui.pushButtonOn.clicked.connect(self.btnOn_clicked)
