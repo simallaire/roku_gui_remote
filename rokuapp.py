@@ -1,10 +1,11 @@
 import requests
 
+from pynput import keyboard
 from PyQt6.QtWidgets import QDialog, QMainWindow, QPushButton
 from remote import Ui_Dialog
 
 class RokuApp():
-    def __init__(self, ip):
+    def __init__(self, ip, kb_listener):
         self.Dialog = QDialog()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self.Dialog)
@@ -17,13 +18,33 @@ class RokuApp():
         self.ui.pushButtonLeft.clicked.connect(self.btnLeft_clicked)
         self.ui.pushButtonRight.clicked.connect(self.btnRight_clicked)
         self.ui.pushButtonHome.clicked.connect(self.btnHome_clicked)
-        self.ui.pushButtonOk.clicked.connect(self.btnOk_clicker)
+        self.ui.pushButtonOk.clicked.connect(self.btnOk_clicked)
         self.ui.pushButtonBack.clicked.connect(self.btnBack_clicked)
         self.ui.pushButtonVolUp.clicked.connect(self.btnVolUp_clicked)
         self.ui.pushButtonVolDown.clicked.connect(self.btnVolDown_clicked)
         self.ui.pushButtonPause.clicked.connect(self.btnPause_clicked)
         self.ui.pushButtonPlay.clicked.connect(self.btnPlay_clicked)
-        print(requests.get(f"{self.baseAddr}/query/device-info").text)
+        print(requests.get(f"{self.baseAddr}/query/device-info").content)
+        if kb_listener:
+            self.listener = keyboard.Listener(on_press=self.onKeyPress)
+            self.listener.start()
+  
+    def onKeyPress(self, key):
+        if key == keyboard.Key.up:
+            self.btnUp_clicked()
+        elif key == keyboard.Key.down:
+            self.btnDown_clicked()  
+        elif key == keyboard.Key.left:
+            self.btnLeft_clicked()
+        elif key == keyboard.Key.right:
+            self.btnRight_clicked()
+        elif key == keyboard.Key.enter:
+            self.btnOk_clicked()
+        elif key == keyboard.Key.backspace:
+            self.btnBack_clicked()
+        elif key == keyboard.Key.space:
+            self.btnPlay_clicked()
+            
         
     def btnPause_clicked(self):
         requests.post(f"{self.baseAddr}/keypress/pause", "")
@@ -52,7 +73,7 @@ class RokuApp():
     def btnHome_clicked(self):
         requests.post(f"{self.baseAddr}/keypress/home", "")
     
-    def btnOk_clicker(self):
+    def btnOk_clicked(self):
         requests.post(f"{self.baseAddr}/keypress/select", "")
         
     def btnVolUp_clicked(self):
