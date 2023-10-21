@@ -5,7 +5,7 @@ Simple Qt6 UI replicating a simple remote control for Roku TVs
 ```
 pipenv install
 pipenv shell
-python app.py
+python app.py --host [Roku_IP]
 ```
 
 ## Modifiy UI
