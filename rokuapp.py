@@ -30,21 +30,30 @@ class RokuApp():
             self.listener.start()
   
     def onKeyPress(self, key):
-        if key == keyboard.Key.up:
-            self.btnUp_clicked()
-        elif key == keyboard.Key.down:
-            self.btnDown_clicked()  
-        elif key == keyboard.Key.left:
-            self.btnLeft_clicked()
-        elif key == keyboard.Key.right:
-            self.btnRight_clicked()
-        elif key == keyboard.Key.enter:
-            self.btnOk_clicked()
-        elif key == keyboard.Key.backspace:
-            self.btnBack_clicked()
-        elif key == keyboard.Key.space:
-            self.btnPlay_clicked()
-            
+        if self.Form.isActiveWindow():
+            if key == keyboard.Key.up:
+                self.btnUp_clicked()
+            elif key == keyboard.Key.down:
+                self.btnDown_clicked()  
+            elif key == keyboard.Key.left:
+                self.btnLeft_clicked()
+            elif key == keyboard.Key.right:
+                self.btnRight_clicked()
+            elif key == keyboard.Key.enter:
+                self.btnOk_clicked()
+            elif key == keyboard.Key.backspace:
+                self.btnBack_clicked()
+            elif key == keyboard.Key.space:
+                self.btnPlay_clicked()
+            else:
+                try:
+                    self.send_char(key.char)
+                except AttributeError:
+                    print("Cant resolve key")
+                
+                
+    def send_char(self, char):
+        requests.post(f"{self.baseAddr}/keypress/Lit_{char}", "")
         
     def btnPause_clicked(self):
         requests.post(f"{self.baseAddr}/keypress/pause", "")
