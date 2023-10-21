@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyqt6 = "==6.5.3"
+pyqt6-sip = "==13.6.0"
+requests = "==2.31.0"
+pynput = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
