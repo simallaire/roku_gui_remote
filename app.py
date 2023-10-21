@@ -11,6 +11,7 @@ parse.add_argument("-k", "--disable-keyboard", help="Disable keyboard shortcuts"
 args = parse.parse_args()
 
 app = QApplication([])
-main = RokuApp(ip=f"{args.host}:{args.port}", kb_listener=not args.disable_keyboard)
+roku_host = f"{args.host}:{args.port}"
+main = RokuApp(host=roku_host, kb_listener=not args.disable_keyboard)
 
 app.exec()

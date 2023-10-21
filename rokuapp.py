@@ -5,12 +5,12 @@ from PyQt6.QtWidgets import QDialog, QMainWindow, QPushButton, QWidget
 from remote import Ui_Form
 
 class RokuApp():
-    def __init__(self, ip, kb_listener):
+    def __init__(self, host, kb_listener):
         self.Form = QWidget()
         self.ui = Ui_Form()
         self.ui.setupUi(self.Form)
         self.Form.show()
-        self.baseAddr = "http://" + ip
+        self.baseAddr = "http://" + host
         self.ui.pushButtonOff.clicked.connect(self.btnOff_clicked)
         self.ui.pushButtonOn.clicked.connect(self.btnOn_clicked)
         self.ui.pushButtonUp.clicked.connect(self.btnUp_clicked)
